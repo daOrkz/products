@@ -7,6 +7,6 @@ if(!empty($_SESSION['user'])) {
   print_r($_SESSION);
   echo '</pre>';
 }
-// $_SESSION['msg'] = '';
+// OLOLLOLO
 
 ?>

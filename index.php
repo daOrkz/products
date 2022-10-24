@@ -1,3 +1,13 @@
+<?php
+
+session_start();
+
+if(!empty($_SESSION['msg'])) {
+  echo $_SESSION['msg'];
+}
+$_SESSION['msg'] = '';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,11 +18,11 @@
 </head>
 <body>
 
-<form action="">
+<form action="" method="POST">
   <input type="text" name="login" id="" required>
   <input type="password" name="password" id="" required>
-  <button formaction="services/registration.php" type="submit">Auth</button>
-  <button formaction="services/signin.php" type="submit">LogIn</button>
+  <button formaction="services/registration.php" type="submit">Registration</button>
+  <button formaction="services/signin.php" type="submit">SignIn</button>
 </form>
   
 </body>
