@@ -4,7 +4,6 @@ require_once('config.php');
 
 class DB {
 
-
   public static $pdo  = null;
   public static $stmt = null;
 
@@ -27,8 +26,8 @@ class DB {
 		return self::$pdo; 
 	}
 
-  public static function connect($sql, $args = []){
-    if (!$args){
+  public static function connect($sql, $args){
+    if (!empty($args)){
       return self::start()->query($sql);
     }
 
@@ -40,3 +39,5 @@ class DB {
   }
 
 }
+
+
