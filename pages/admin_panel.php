@@ -7,6 +7,6 @@ if(!empty($_SESSION['user'])) {
   print_r($_SESSION);
   echo '</pre>';
 }
-// OLOLLOLO
+// POIUY!!!
 
 ?>
