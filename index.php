@@ -11,8 +11,8 @@
 <form action="">
   <input type="text" name="login" id="" required>
   <input type="password" name="password" id="" required>
-  <button formaction="services/auth.php" type="submit">Auth</button>
-  <button formaction="services/login.php" type="submit">LogIn</button>
+  <button formaction="services/registration.php" type="submit">Auth</button>
+  <button formaction="services/signin.php" type="submit">LogIn</button>
 </form>
   
 </body>
