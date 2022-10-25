@@ -3,6 +3,7 @@
 session_start();
 
 require_once( realpath(__DIR__ . '/..') .  '/connect/connect.php' );
+require_once( realpath(__DIR__ . '/..') .  '/sql/sqlQuery.php' );
 
 if(empty($_POST['login']) && empty($_POST['password'])) {
   $_SESSION['msg'] = 'Вы ввели не все данные';
@@ -15,13 +16,17 @@ if(!empty($_POST['login']) && !empty($_POST['password'])) {
   $login = strip_tags($_POST['login']);
   $password = strip_tags($_POST['password']);
   
-  $data = DB::connect("SELECT * FROM `users` WHERE `login` = '$login'")->fetchAll(PDO::FETCH_ASSOC);
-  $hash = $data[0]['password'];
-
-  $_SESSION['user']['login'] = $data[0]['login'];
-  $_SESSION['user']['status'] = $data[0]['status'];
+  $data = DB::connect(sprintf($queryStr['getPswUser'], $login))->fetch(PDO::FETCH_COLUMN);
+  $hash = $data;
 
   if(password_verify($password, $hash)) {
+
+    $status = DB::connect(sprintf($queryStr['getUserStatus'], $login))->fetch(PDO::FETCH_ASSOC);
+    // $status = DB::connect("SELECT users.login, status.name, status.status_code FROM users INNER JOIN status ON users.status_id = status.id WHERE users.login = '$login'")->fetchAll(PDO::FETCH_ASSOC);
+
+    $_SESSION['user']['login'] = $status['login'];
+    $_SESSION['user']['status'] = $status['name'];
+    $_SESSION['user']['statusCode'] = $status['status_code'];
     header('Location: ../pages/admin_panel.php');
   } else {
     $_SESSION['msg'] = 'Вы ввели не верный логин или пароль';

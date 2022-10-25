@@ -15,6 +15,7 @@ if(!empty($_POST['login']) && !empty($_POST['password'])) {
   $login = strip_tags($_POST['login']);
   $password = strip_tags($_POST['password']);
   
+  //проверяем на существующий логин
   $count = DB::connect("SELECT `login` FROM `users` WHERE `login` = '$login'")->rowCount();
   if($count > 0) {
     $_SESSION['msg'] = 'Такой логин уже есть';

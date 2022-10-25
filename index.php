@@ -23,6 +23,8 @@ $_SESSION['msg'] = '';
   <input type="password" name="password" id="" required>
   <button formaction="services/registration.php" type="submit">Registration</button>
   <button formaction="services/signin.php" type="submit">SignIn</button>
+  <p>admin : admin</p>
+  <p> user : user</p>
 </form>
   
 </body>
