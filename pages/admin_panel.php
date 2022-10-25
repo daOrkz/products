@@ -8,5 +8,6 @@ if(!empty($_SESSION['user'])) {
   echo '</pre>';
 }
 // $_SESSION['msg'] = '';
+//1
 
 ?>
