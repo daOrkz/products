@@ -14,6 +14,16 @@ if(empty($_POST['login']) && empty($_POST['password'])) {
 if(!empty($_POST['login']) && !empty($_POST['password'])) {
   $login = strip_tags($_POST['login']);
   $password = strip_tags($_POST['password']);
+  
+  $count = DB::connect("SELECT `login` FROM `users` WHERE `login` = '$login'")->rowCount();
+  if($count > 0) {
+    $_SESSION['msg'] = 'Такой логин уже есть';
+
+    header('Location: /');
+    exit();
+  }
+
+
   $password_hash = password_hash($password, PASSWORD_BCRYPT);
 
   DB::connect("INSERT INTO `users` SET `login` = ?, `password` = ?", [$login, $password_hash]);
