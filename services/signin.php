@@ -27,7 +27,13 @@ if(!empty($_POST['login']) && !empty($_POST['password'])) {
     $_SESSION['user']['login'] = $status['login'];
     $_SESSION['user']['status'] = $status['name'];
     $_SESSION['user']['statusCode'] = $status['status_code'];
-    header('Location: ../pages/admin_panel.php');
+
+    if($_SESSION['user']['status'] == 'admin' && $_SESSION['user']['statusCode'] > 90){
+      header('Location: ../pages/admin_panel.php');
+    }
+    if($_SESSION['user']['status'] != 'admin' && $_SESSION['user']['statusCode'] < 90){
+      header('Location: ../pages/user_panel.php');
+    }
   } else {
     $_SESSION['msg'] = 'Вы ввели не верный логин или пароль';
     header('Location: /');

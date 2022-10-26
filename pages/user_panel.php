@@ -1,8 +1,7 @@
-<?php
+<?php 
 
-session_start();
 include_once('templates/header.php');
-
+session_start();
 
 if(!empty($_SESSION['user'])) {
   echo '<pre>';
@@ -10,7 +9,6 @@ if(!empty($_SESSION['user'])) {
   echo '</pre>';
 }
 
-echo 'admin panel';
+echo 'user panel';
 include_once('templates/footer.php');
 
-?>
