@@ -19,14 +19,15 @@ $_SESSION['msg'] = '';
 </head>
 <body>
 
-<form action="" method="POST">
-  <input type="text" name="login" id="" required>
-  <input type="password" name="password" id="" required>
-  <button formaction="services/registration.php" type="submit">Registration</button>
-  <button formaction="services/signin.php" type="submit">SignIn</button>
-  <p>admin : admin</p>
-  <p> user : user</p>
-</form>
-  
+<div class="form__login__wrap">
+  <form class="form__login" action="" method="POST">
+    <input type="text" name="login" id="" placeholder="Login" required>
+    <input type="password" name="password" id="" placeholder="Password" required>
+    <button formaction="services/registration.php" type="submit">Registration</button>
+    <button formaction="services/signin.php" type="submit">SignIn</button>
+    <p>admin : admin</p>
+    <p> user : user</p>
+  </form>
+</div>  
 </body>
 </html>

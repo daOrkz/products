@@ -16,6 +16,9 @@ input, textarea, button {
   width: 250px;
   margin-bottom: 10px;
   font-size: 1.8em;
+
+  border-radius: 10px;
+  outline: none;
 }
 textarea {
   resize: vertical;
@@ -26,6 +29,31 @@ button {
   font-weight: bold;
   cursor: pointer;
 }
+
+table {
+  margin-bottom: 20px;
+}
+th, td {
+  font-size: 1.8em;
+  padding: 10px;
+}
+th {
+  background: #555;
+  color: #fff;
+}
+td {
+  background: #eee;
+}
+a {
+  text-decoration: none;
+  transition: 0.2s ease;
+  color: #3f75c5;
+  font-size: 18px;
+}
+td:nth-child(7) > a {
+  color: #c22a2a;
+}
+
 .container {
   margin: 0 auto;
   width: 1400px;
@@ -61,4 +89,26 @@ button {
 }
 .nav__link:hover {
   color: orangered;
+}
+
+.form__login__wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.form__login {
+  background-color: lightslategray;
+  border-radius: 10px;
+
+  width: 400px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form__update__wrap {
+  margin: 20px 0;
 }
