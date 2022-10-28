@@ -3,7 +3,7 @@
 session_start();
 
 require_once( realpath(__DIR__ . '/..') .  '/connect/connect.php' );
-require_once( realpath(__DIR__ . '/..') .  '/sql/sqlQuery.php' );
+require_once( realpath(__DIR__ . '/..') .  '/connect/sqlQuery.php' );
 
 if(empty($_POST['login']) && empty($_POST['password'])) {
   $_SESSION['msg'] = 'Вы ввели не все данные';
