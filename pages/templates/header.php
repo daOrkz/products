@@ -18,7 +18,7 @@
       <ul class="nav__list">
         <li class="nav__li"><a href="" class="nav__link">Home</a></li>
         <li class="nav__li"><a href="" class="nav__link">Contacts</a></li>
-        <li class="nav__li"><a href="" class="nav__link">LogOut</a></li>
+        <li class="nav__li"><a href="../../services/logout.php" class="nav__link">LogOut</a></li>
       </ul>
     </nav>
   </div>
