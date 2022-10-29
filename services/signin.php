@@ -13,7 +13,7 @@ if(empty($_POST['login']) && empty($_POST['password'])) {
 }
 
 if(!empty($_POST['login']) && !empty($_POST['password'])) {
-  $login = strip_tags($_POST['login']);
+  $login    = strip_tags($_POST['login']);
   $password = strip_tags($_POST['password']);
   
   $data = DB::connect(sprintf($queryStr['getPswUser'], $login))->fetch(PDO::FETCH_COLUMN);
@@ -24,8 +24,8 @@ if(!empty($_POST['login']) && !empty($_POST['password'])) {
     $status = DB::connect(sprintf($queryStr['getUserStatus'], $login))->fetch(PDO::FETCH_ASSOC);
     // $status = DB::connect("SELECT users.login, status.name, status.status_code FROM users INNER JOIN status ON users.status_id = status.id WHERE users.login = '$login'")->fetchAll(PDO::FETCH_ASSOC);
 
-    $_SESSION['user']['login'] = $status['login'];
-    $_SESSION['user']['status'] = $status['name'];
+    $_SESSION['user']['login']      = $status['login'];
+    $_SESSION['user']['status']     = $status['name'];
     $_SESSION['user']['statusCode'] = $status['status_code'];
 
     if($_SESSION['user']['status'] == 'admin' && $_SESSION['user']['statusCode'] > 90){

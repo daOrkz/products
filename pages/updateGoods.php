@@ -32,7 +32,7 @@ $image = $goodForUpdate['img'];
 
 <div class="container">
   <div class="form__update__wrap">
-    <form action="../vendor/update.php?id=<?= $id ?>" method="POST">
+    <form action="../services/updateGoods.php?id=<?= $id ?>" method="POST">
         <input name="title" type="text" placeholder="Title" value=" <?= $title ?> ">
         <input name="price" type="text" placeholder="Price" value=" <?= $price ?> ">
         <textarea name="text" id="" cols="30" rows="10" placeholder="About"> <?= $text ?> </textarea>

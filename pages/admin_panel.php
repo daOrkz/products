@@ -1,28 +1,33 @@
 <?php
 
 require_once( realpath(__DIR__ . '/..') .  '/connect/connect.php' );
-
 require_once( realpath(__DIR__ . '/..') .  '/connect/getAllGoods.php' );
 
 
 session_start();
 include_once('templates/header.php');
 
-if($_SESSION['user']['status'] == 'admin' && $_SESSION['user']['statusCode'] > 90){
-  echo '<p>Hello Admin!</p>';
-
-
+if($_SESSION['user']['status'] != 'admin' && $_SESSION['user']['statusCode'] < 90){
+  header('Location: /');
 }
 
+if(!empty($_SESSION['msg'])) {
+  echo "
+    <div class='container'>
+      <p class='msg'> {$_SESSION['msg']} </p>
+    </div> 
+  ";
+}
+$_SESSION['msg'] = '';
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Admin Panel</title>
 </head>
 <body>
 

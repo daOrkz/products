@@ -28,3 +28,12 @@ $queryStr['getAllGoods'] =
 FROM
   goods
 ";
+
+$queryStr['updateGood'] = 
+"UPDATE
+  goods
+SET
+  title = :title,  price = :price, text = :text, img = :image
+WHERE
+  id = '%s'
+";
