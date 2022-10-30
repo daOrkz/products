@@ -5,12 +5,6 @@ require_once( realpath(__DIR__ . '/..') .  '/connect/sqlQuery.php' );
 
 session_start();
 
-echo 'update';
-
-echo '<pre>';
-print_r($_REQUEST);
-echo '</pre>';
-
 $id    = strip_tags($_REQUEST['id']);
 $title = strip_tags($_REQUEST['title']);
 $price = strip_tags($_REQUEST['price']);

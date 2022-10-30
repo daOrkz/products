@@ -37,3 +37,12 @@ SET
 WHERE
   id = '%s'
 ";
+
+$queryStr['aboutGood'] = 
+"SELECT
+  *
+FROM
+  goods
+WHERE
+  id = '%s'
+";

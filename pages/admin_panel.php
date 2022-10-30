@@ -14,8 +14,10 @@ if($_SESSION['user']['status'] != 'admin' && $_SESSION['user']['statusCode'] < 9
 if(!empty($_SESSION['msg'])) {
   echo "
     <div class='container'>
-      <p class='msg'> {$_SESSION['msg']} </p>
-    </div> 
+      <div class='msg msg-success' role='alert'>
+      {$_SESSION['msg']} 
+      </div>
+    </div>
   ";
 }
 $_SESSION['msg'] = '';
