@@ -46,3 +46,17 @@ FROM
 WHERE
   id = '%s'
 ";
+
+$queryStr['deleteGood'] = 
+"DELETE FROM
+  goods
+WHERE
+id = '%s'
+";
+
+$queryStr['addGood'] = 
+"INSERT INTO
+  goods
+SET
+  title = :title,  price = :price, text = :text, img = :image
+";

@@ -31,7 +31,7 @@ button {
 }
 
 table {
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 th, td {
   font-size: 1.8em;
@@ -133,6 +133,7 @@ td:nth-child(7) > a {
   --bs-alert-padding-x: 1rem;
   --bs-alert-padding-y: 1rem;
   --bs-alert-margin-bottom: 1rem;
+  --bs-alert-margin-top: 1rem;
   /* --bs-alert-color: inherit; */
   /* --bs-alert-border-color: transparent; */
   --bs-alert-border: 1px solid var(--bs-alert-border-color);
@@ -140,8 +141,11 @@ td:nth-child(7) > a {
   position: relative;
   padding: var(--bs-alert-padding-y) var(--bs-alert-padding-x);
   margin-bottom: var(--bs-alert-margin-bottom);
+  margin-top: var(--bs-alert-margin-top);
   color: var(--bs-alert-color);
   background-color: var(--bs-alert-bg);
   border: var(--bs-alert-border);
   border-radius: var(--bs-alert-border-radius);
+  font-size: 2em;
+  max-width: 400px;
 }

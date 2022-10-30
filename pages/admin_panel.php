@@ -57,6 +57,9 @@ $_SESSION['msg'] = '';
       </tr>
     <?php } ?>
   </table>
+  <form action="../pages/addGood.php">
+    <button type="submit">Добавить</button>
+  </form>
 </div>
 <?php
 include_once('templates/footer.php');

@@ -6,7 +6,7 @@ require_once( realpath(__DIR__ . '/..') .  '/connect/connect.php' );
 require_once( realpath(__DIR__ . '/..') .  '/connect/sqlQuery.php' );
 include_once('templates/header.php');
 
-$id    = $_GET['id'];
+$id = $_GET['id'];
 
 $good = DB::connect(sprintf($queryStr['aboutGood'], $id))->fetch();
 
