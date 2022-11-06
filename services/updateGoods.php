@@ -13,8 +13,18 @@ $image = strip_tags($_REQUEST['image']);
 
 $opt = ['title' => $title, 'price' => $price, 'text' => $text, 'image' => $image];
 
-$count = DB::connect(sprintf($queryStr['updateGood'], $id), $opt)->rowCount();
+try {
+  $count = DB::connect(sprintf($queryStr['updateGood'], $id), $opt)->rowCount();
+} catch (PDOException $e) {
+  $_SESSION['msg'] = $e;
+  header('Location: ../pages/admin_panel.php');
+}
+if($count > 0) {
+  $_SESSION['msg'] = 'Данные успешно обновленны';
+  header('Location: ../pages/admin_panel.php');
+}
 
+/* 
 if($count > 0) {
   $_SESSION['msg'] = 'Данные успешно обновленны';
   header('Location: ../pages/admin_panel.php');
@@ -22,3 +32,4 @@ if($count > 0) {
   $_SESSION['msg'] = 'Данные не удалось обновить';
   header('Location: ../pages/admin_panel.php');
 }
+ */

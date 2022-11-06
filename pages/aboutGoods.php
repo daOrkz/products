@@ -12,7 +12,7 @@ $good = DB::connect(sprintf($queryStr['aboutGood'], $id))->fetch();
 
 $title = $good['title'];
 $price = $good['price'];
-$text = $good['text'];
+$text  = $good['text'];
 $image = $good['img'];
 
 ?>
