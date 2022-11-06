@@ -1,10 +1,17 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 require_once( realpath(__DIR__ . '/..') .  '/connect/connect.php' );
 require_once( realpath(__DIR__ . '/..') .  '/connect/getAllGoods.php' );
+// require_once( realpath(__DIR__ . '/..') .  '/services/search.php' );
 
 
+echo __DIR__;
 session_start();
+
+// echo count($filterGoods);
+
 include_once('templates/header.php');
 
 if($_SESSION['user']['status'] != 'admin' && $_SESSION['user']['statusCode'] < 90){
@@ -34,6 +41,15 @@ $_SESSION['msg'] = '';
 <body>
 
 <div class="container">
+  <div class="form__search__wrap">
+    <form class="form-search" action="../services/search.php">
+      <input type="text" name="id" id="" placeholder="id">
+      <input type="text" name="title" id="" placeholder="title">
+      <input type="text" name="price" id="" placeholder="price">
+      <input type="text" name="text" id="" placeholder="text">
+      <button type="submit">Search</button>
+    </form>
+  </div>
   <table>
     <tr>
       <th>id</th>

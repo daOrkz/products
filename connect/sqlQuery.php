@@ -60,3 +60,16 @@ $queryStr['addGood'] =
 SET
   title = :title,  price = :price, text = :text, img = :image
 ";
+
+$queryStr['search'] = 
+"SELECT
+  * 
+FROM
+  goods
+WHERE
+  MATCH (title,text) 
+AGAINST
+('%s' IN BOOLEAN MODE)
+";
+
+//SELECT * FROM `goods` WHERE MATCH (text) AGAINST('*свар**аппар*' IN BOOLEAN MODE);

@@ -113,6 +113,15 @@ td:nth-child(7) > a {
   margin: 20px 0;
 }
 
+.form__search__wrap {
+  margin: 20px 0;
+}
+.form-search {
+  display: flex;
+}
+.form-search > input {
+  padding: 5px 10px;
+}
 .msg-success {
   --bs-alert-color: #0f5132;;
   --bs-alert-bg: #d1e7dd;
