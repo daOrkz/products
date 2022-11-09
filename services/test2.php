@@ -1,9 +1,6 @@
 <?php
 
-require_once( 'search.php' );
+$a = 5;
+$b = 10;
 
-echo 'test2';
-
-echo '<pre>';
-print_r($filterGoods);
-echo '</pre>';
+return $a + $b;

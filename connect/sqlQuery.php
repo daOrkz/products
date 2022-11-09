@@ -61,7 +61,7 @@ SET
   title = :title,  price = :price, text = :text, img = :image
 ";
 
-$queryStr['search'] = 
+$queryStr['searchOnText'] = 
 "SELECT
   * 
 FROM
@@ -70,6 +70,22 @@ WHERE
   MATCH (title,text) 
 AGAINST
 ('%s' IN BOOLEAN MODE)
+";
+$queryStr['searchOnId'] = 
+"SELECT
+  * 
+FROM
+  goods
+WHERE
+  id = '%s'
+";
+$queryStr['searchOnPrice'] = 
+"SELECT
+  * 
+FROM
+  goods
+WHERE
+  price = '%s'
 ";
 
 //SELECT * FROM `goods` WHERE MATCH (text) AGAINST('*свар**аппар*' IN BOOLEAN MODE);

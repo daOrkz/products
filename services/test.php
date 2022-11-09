@@ -1,6 +1,6 @@
 <?php
 
-// require_once( realpath(__DIR__ . '/..') .  'search.php' );
+include('test3.php');
+$res = include('test2.php');
 
-header('Location: test2.php');
-echo 'test';
+echo $res;

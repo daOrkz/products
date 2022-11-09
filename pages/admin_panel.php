@@ -1,18 +1,20 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 
-require_once( realpath(__DIR__ . '/..') .  '/connect/connect.php' );
-require_once( realpath(__DIR__ . '/..') .  '/connect/getAllGoods.php' );
-// require_once( realpath(__DIR__ . '/..') .  '/services/search.php' );
+// require_once( realpath(__DIR__ . '/..') .  '/connect/getAllGoods.php' );  // -> $goods
+// require_once( realpath(__DIR__ . '/..') .  '/services/search.php' );   // -> $filterGoods
 
-
-echo __DIR__;
 session_start();
 
-// echo count($filterGoods);
+// $firstLoad = true;
+$goods = require_once( 'admin_load.php' );
 
-include_once('templates/header.php');
+
+// echo count($filterGoods);
+// print_r($filterGoods);
+
+// if(!empty($filterGoods)) {
+//   $goods = $filterGoods;
+// }
 
 if($_SESSION['user']['status'] != 'admin' && $_SESSION['user']['statusCode'] < 90){
   header('Location: /');
@@ -29,6 +31,8 @@ if(!empty($_SESSION['msg'])) {
 }
 $_SESSION['msg'] = '';
 ?>
+
+<?php include_once('templates/header.php'); ?>
 
 <!DOCTYPE html>
 <html lang="ru">
@@ -78,6 +82,5 @@ $_SESSION['msg'] = '';
     <button type="submit">Добавить</button>
   </form>
 </div>
-<?php
-include_once('templates/footer.php');
-?>
+
+<?php include_once('templates/footer.php'); ?>
