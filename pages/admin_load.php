@@ -1,19 +1,13 @@
 <?php
 
-$firstLoad = true;
-
 function loadScrypt(){
-  global $firstLoad;
-  
-  if($firstLoad){
+   
+  if(empty($_REQUEST)){
     return require_once( realpath(__DIR__ . '/..') .  '/connect/getAllGoods.php' );
-    return $goods;
   }
-  $firstLoad = false;
 
-  if(!$firstLoad){
-    require_once( realpath(__DIR__ . '/..') .  '/services/search.php' );   // -> $filterGoods
-    return $filterGoods;
+  if(!empty($_REQUEST)){
+    return require_once( realpath(__DIR__ . '/..') .  '/services/search.php' );   // -> $filterGoods
   }
   
 }

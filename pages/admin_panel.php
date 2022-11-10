@@ -46,7 +46,8 @@ $_SESSION['msg'] = '';
 
 <div class="container">
   <div class="form__search__wrap">
-    <form class="form-search" action="../services/search.php">
+    <form class="form-search" action=""> 
+      <!-- ../services/search.php -->
       <input type="text" name="id" id="" placeholder="id">
       <input type="text" name="title" id="" placeholder="title">
       <input type="text" name="price" id="" placeholder="price">
