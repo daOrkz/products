@@ -28,6 +28,14 @@ $queryStr['getAllGoods'] =
 FROM
   goods
 ";
+$queryStr['getAllGoodsOffset'] = 
+// "SELECT
+//   *
+// FROM
+//   goods 
+"ORDER BY id
+LIMIT %u OFFSET %u
+";
 
 $queryStr['updateGood'] = 
 "UPDATE
@@ -88,4 +96,3 @@ WHERE
   price = '%s'
 ";
 
-//SELECT * FROM `goods` WHERE MATCH (text) AGAINST('*свар**аппар*' IN BOOLEAN MODE);

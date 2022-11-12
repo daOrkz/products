@@ -1,6 +1,5 @@
 <?php
 
-$a = 5;
-$b = 10;
-
-return $a + $b;
+function func($a, $b){
+  return $a + $b;
+}

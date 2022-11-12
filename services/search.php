@@ -2,6 +2,7 @@
 
 require_once( realpath(__DIR__ . '/..') .  '/connect/connect.php' );
 require_once( realpath(__DIR__ . '/..') .  '/connect/sqlQuery.php' );
+require_once( realpath(__DIR__ . '/..') .  '/services/outputGoods.php' ); // -> outputGoods(str queryStr)
 
 // session_start();
 
@@ -14,19 +15,40 @@ $searchText = '*' . $title . $text . '*';
 
 try {
   if(!empty($_REQUEST['id'])) {
-    $filterGoods = DB::connect(sprintf($queryStr['searchOnId'], $id))->fetchAll();
+    $sqlQuerryStr = sprintf($queryStr['searchOnId'], $id);
+    $filterRow = DB::connect($sqlQuerryStr)->rowCount();
+    if($filterRow > 3) {
+     return $filterGoods = outputGoods($sqlQuerryStr);
+    }
+
+    // $filterGoods = DB::connect(sprintf($queryStr['searchOnId'], $id))->fetchAll();
+    return $filterGoods = DB::connect($sqlQuerryStr)->fetchAll();
   }
   if(!empty($_REQUEST['price'])) {
-    $filterGoods = DB::connect(sprintf($queryStr['searchOnPrice'], $price))->fetchall();
+    $sqlQuerryStr = sprintf($queryStr['searchOnPrice'], $price);
+    $filterRow = DB::connect($sqlQuerryStr)->rowCount();
+    if($filterRow > 3) {
+      return $filterGoods = outputGoods($sqlQuerryStr);
+    }
+
+    return $filterGoods = DB::connect($sqlQuerryStr)->fetchAll();
+
+    // $filterGoods = DB::connect(sprintf($queryStr['searchOnPrice'], $price))->fetchall();
   }
   if(!empty($_REQUEST['title']) || !empty($_REQUEST['text'])) {
-    $filterGoods = DB::connect(sprintf($queryStr['searchOnText'], $searchText))->fetchAll();
+    $sqlQuerryStr = sprintf($queryStr['searchOnText'], $searchText);
+    $filterRow = DB::connect($sqlQuerryStr)->rowCount();
+    if($filterRow > 3) {
+      return $filterGoods = outputGoods($sqlQuerryStr);
+    }
+
+    return $filterGoods = DB::connect($sqlQuerryStr)->fetchAll();
+
+    // $filterGoods = DB::connect(sprintf($queryStr['searchOnText'], $searchText))->fetchAll();
   }
   return $filterGoods;
-  // header('Location: ../pages/admin_panel.php');
 } catch (PDOException $e) {
   $_SESSION['msg'] = $e;
-  // header('Location: ../pages/admin_panel.php');
   return;
 }
 if(count($filterGoods) == 0) {

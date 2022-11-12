@@ -1,20 +1,14 @@
 <?php
 
-// require_once( realpath(__DIR__ . '/..') .  '/connect/getAllGoods.php' );  // -> $goods
-// require_once( realpath(__DIR__ . '/..') .  '/services/search.php' );   // -> $filterGoods
-
 session_start();
 
-// $firstLoad = true;
-$goods = require_once( 'admin_load.php' );
+$goods = require( realpath(__DIR__ . '/..') .  '/services/admin_load_goods.php' );
+  // if (isset($_GET['page']) && $_GET['page'] > 1){
+  //   $page = $_GET['page'];
+  //   $goods = require( realpath(__DIR__ . '/..') .  '/services/admin_load_goods.php' );
 
+  // }else $page = 1;
 
-// echo count($filterGoods);
-// print_r($filterGoods);
-
-// if(!empty($filterGoods)) {
-//   $goods = $filterGoods;
-// }
 
 if($_SESSION['user']['status'] != 'admin' && $_SESSION['user']['statusCode'] < 90){
   header('Location: /');
