@@ -2,12 +2,7 @@
 
 session_start();
 
-$goods = require( realpath(__DIR__ . '/..') .  '/services/admin_load_goods.php' );
-  // if (isset($_GET['page']) && $_GET['page'] > 1){
-  //   $page = $_GET['page'];
-  //   $goods = require( realpath(__DIR__ . '/..') .  '/services/admin_load_goods.php' );
-
-  // }else $page = 1;
+$goods = require( realpath(__DIR__ . '/..') .  '/services/search.php' );
 
 
 if($_SESSION['user']['status'] != 'admin' && $_SESSION['user']['statusCode'] < 90){
@@ -42,6 +37,7 @@ $_SESSION['msg'] = '';
   <div class="form__search__wrap">
     <form class="form-search" action=""> 
       <!-- ../services/search.php -->
+      <!-- ../pages/admin_search.php -->
       <input type="text" name="id" id="" placeholder="id">
       <input type="text" name="title" id="" placeholder="title">
       <input type="text" name="price" id="" placeholder="price">

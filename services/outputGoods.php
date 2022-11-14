@@ -26,9 +26,13 @@ function outputGoods($query){
 }
 
 function renderPagination($tottalPages){
+/* 
+  $get = '';
+  foreach($_GET as $key=>$value){
+    $get.="$key=$value&";
+  }
+   */
   for ($i = 1; $i <= $tottalPages; $i++){
-    echo "<a href=/pages/admin_panel.php?page=".$i."> Страница ".$i." </a>";
+    echo "<a href=/pages/admin_panel.php?page={$i}> Страница {$i} </a>";
   }
 }
-
-// return outputGoods($query);
