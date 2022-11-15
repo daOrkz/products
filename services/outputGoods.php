@@ -15,24 +15,15 @@ function outputGoods($query){
     }else $page = 1;
     $goodsOnPage = 3;
     $offset = ($page - 1)  * $goodsOnPage;
-    $tottalPages = ceil(count($goods) / $goodsOnPage);
+    $totalPages = ceil(count($goods) / $goodsOnPage);
     $goods = DB::connect(sprintf($query . $queryStr['getAllGoodsOffset'], $goodsOnPage, $offset))->fetchAll();
 
-    renderPagination($tottalPages);
-
-    return $goods;
-  }
-
-}
-
-function renderPagination($tottalPages){
-/* 
-  $get = '';
-  foreach($_GET as $key=>$value){
-    $get.="$key=$value&";
-  }
-   */
-  for ($i = 1; $i <= $tottalPages; $i++){
-    echo "<a href=/pages/admin_panel.php?page={$i}> Страница {$i} </a>";
+    return [
+      'goods'     => $goods,
+      'totalPages' => $totalPages,
+    ];
   }
 }
+
+
+

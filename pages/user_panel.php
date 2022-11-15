@@ -1,7 +1,15 @@
 <?php
 
-require_once( realpath(__DIR__ . '/..') .  '/connect/connect.php' );
-require_once( realpath(__DIR__ . '/..') .  '/connect/getAllGoods.php' );
+// require_once( realpath(__DIR__ . '/..') .  '/connect/connect.php' );
+// require_once( realpath(__DIR__ . '/..') .  '/connect/getAllGoods.php' );
+
+require( realpath(__DIR__ . '/..') .  '/services/pagin.php' );
+$outputDB = require( realpath(__DIR__ . '/..') .  '/services/search.php' );
+
+$fileName =  basename(__FILE__, '.php');
+$goods = $outputDB['goods'];
+$tottalPages = $outputDB['totalPages'];
+
 
 
 session_start();
@@ -11,18 +19,6 @@ if($_SESSION['user']['status'] == 'user' && $_SESSION['user']['statusCode'] < 90
   // header('Location: /');
 }
 
-/* 
-if(!empty($_SESSION['msg'])) {
-  echo "
-    <div class='container'>
-      <div class='msg msg-success' role='alert'>
-      {$_SESSION['msg']} 
-      </div>
-    </div>
-  ";
-}
-$_SESSION['msg'] = '';
- */
 ?>
 
 <!DOCTYPE html>
@@ -55,7 +51,10 @@ $_SESSION['msg'] = '';
         <td><?= $good['img'] ?></td>
         <td><a href="../pages/aboutGoods.php?id=<?= $good['id'] ?>">Подробнее</a></td>
       </tr>
-    <?php } ?>
+    <?php
+      } 
+      renderPagination($tottalPages, $fileName);
+    ?>
   </table>
 </div>
 <?php

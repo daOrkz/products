@@ -2,8 +2,12 @@
 
 session_start();
 
-$goods = require( realpath(__DIR__ . '/..') .  '/services/search.php' );
+require( realpath(__DIR__ . '/..') .  '/services/pagin.php' );
+$outputDB = require( realpath(__DIR__ . '/..') .  '/services/search.php' );
 
+$fileName =  basename(__FILE__, '.php');
+$goods = $outputDB['goods'];
+$tottalPages = $outputDB['totalPages'];
 
 if($_SESSION['user']['status'] != 'admin' && $_SESSION['user']['statusCode'] < 90){
   header('Location: /');
@@ -36,8 +40,6 @@ $_SESSION['msg'] = '';
 <div class="container">
   <div class="form__search__wrap">
     <form class="form-search" action=""> 
-      <!-- ../services/search.php -->
-      <!-- ../pages/admin_search.php -->
       <input type="text" name="id" id="" placeholder="id">
       <input type="text" name="title" id="" placeholder="title">
       <input type="text" name="price" id="" placeholder="price">
@@ -66,7 +68,9 @@ $_SESSION['msg'] = '';
         <td><a href="../pages/updateGoods.php?id=<?= $good['id'] ?> ">Обновить</a></td>
         <td><a href="../services/deleteGoods.php?id=<?= $good['id'] ?>">Удалить</a></td> 
       </tr>
-    <?php } ?>
+    <?php } 
+      renderPagination($tottalPages, $fileName);
+    ?>
   </table>
 
   <form action="../pages/addGood.php">
