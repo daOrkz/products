@@ -2,21 +2,24 @@
 
 session_start();
 include_once('templates/header.php');
-require_once( realpath(__DIR__ . '/..') .  '/connect/getAllGoods.php' );
+$outputDB = require( realpath(__DIR__ . '/..') .  '/services/search.php' );
+print_r($outputDB);
+$good = $outputDB[0];
+
 
 $goodForUpdate;
 $id = $_GET['id'];
 
-foreach($goods as $idx => $good){
-  if($good['id'] == $id) {
-    $goodForUpdate = $good;
-  }
-}
+// foreach($goods as $idx => $good){
+//   if($good['id'] == $id) {
+//     $goodForUpdate = $good;
+//   }
+// }
 
-$title = $goodForUpdate['title'];
-$price = $goodForUpdate['price'];
-$text = $goodForUpdate['text'];
-$image = $goodForUpdate['img'];
+$title = $good['title'];
+$price = $good['price'];
+$text = $good['text'];
+$image = $good['img'];
 
 ?>
 

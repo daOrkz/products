@@ -5,11 +5,13 @@ require_once( realpath(__DIR__ . '/..') .  '/connect/sqlQuery.php' );
 require_once( realpath(__DIR__ . '/..') .  '/services/outputGoods.php' ); // -> outputGoods(str queryStr)
 
 // session_start();
+if(array_key_exists('id', $_GET)){
+  $id = trim($_REQUEST['id']);
+}
 
-if(array_key_exists('id', $_GET)) {
+if(array_key_exists('title', $_GET)) {
   $_SESSION['search'] = '';
 
-  $id    = trim($_REQUEST['id']);
   $title = trim($_REQUEST['title']);
   $price = trim($_REQUEST['price']);
   $text  = trim($_REQUEST['text']);

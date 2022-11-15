@@ -6,8 +6,11 @@ require( realpath(__DIR__ . '/..') .  '/services/pagin.php' );
 $outputDB = require( realpath(__DIR__ . '/..') .  '/services/search.php' );
 
 $fileName =  basename(__FILE__, '.php');
-$goods = $outputDB['goods'];
-$tottalPages = $outputDB['totalPages'];
+$goods = $outputDB;
+if(array_key_exists('goods', $outputDB)){
+  $goods = $outputDB['goods'];
+  $tottalPages = $outputDB['totalPages'];
+}
 
 if($_SESSION['user']['status'] != 'admin' && $_SESSION['user']['statusCode'] < 90){
   header('Location: /');
@@ -69,7 +72,9 @@ $_SESSION['msg'] = '';
         <td><a href="../services/deleteGoods.php?id=<?= $good['id'] ?>">Удалить</a></td> 
       </tr>
     <?php } 
+    if(array_key_exists('goods', $outputDB)){
       renderPagination($tottalPages, $fileName);
+    }
     ?>
   </table>
 
