@@ -3,12 +3,12 @@
 session_start();
 
 require( realpath(__DIR__ . '/..') .  '/services/pagin.php' );
-$outputDB = require( realpath(__DIR__ . '/..') .  '/services/search.php' );
+$outputDB = require( realpath(__DIR__ . '/..') .  '/services/searchUser.php' );
 
 $fileName =  basename(__FILE__, '.php');
-$goods = $outputDB;
-if(array_key_exists('goods', $outputDB)){
-  $goods = $outputDB['goods'];
+$users = $outputDB;
+if(array_key_exists('users', $outputDB)){
+  $users = $outputDB['users'];
   $tottalPages = $outputDB['totalPages'];
 }
 
@@ -47,35 +47,31 @@ $_SESSION['msg'] = '';
   <div class="form__search__wrap">
     <form class="form-search" action=""> 
       <input type="text" name="id" id="" placeholder="id">
-      <input type="text" name="title" id="" placeholder="title">
-      <input type="text" name="price" id="" placeholder="price">
-      <input type="text" name="text" id="" placeholder="text">
+      <input type="text" name="login" id="" placeholder="login">
       <button type="submit">Search</button>
     </form>
   </div>
   <table>
     <tr>
       <th>id</th>
-      <th>Название</th>
-      <th>Цена</th>
-      <th>Описание</th>
-      <th>Изображение</th>
+      <th>Логин</th>
+      <th>Статус</th>
+      <th>Статус код</th>
       <th>&#9998;</th>
       <th>&#10006;</th>
     </tr>
 
-    <?php foreach($goods as $good) { ?>
+    <?php foreach($users as $user) { ?>
       <tr>
-        <td><?= $good['id']    ?></td>
-        <td><?= $good['title'] ?></td>
-        <td><?= $good['price'] ?></td>
-        <td><?= $good['text']  ?></td>
-        <td><?= $good['img']   ?></td>
+        <td><?= $user['id']    ?></td>
+        <td><?= $user['login'] ?></td>
+        <td><?= $user['name'] ?></td>
+        <td><?= $user['status_code']  ?></td>
         <td><a href="../pages/updateGoods.php?id=<?= $good['id'] ?> ">Обновить</a></td>
         <td><a href="../services/deleteGoods.php?id=<?= $good['id'] ?>">Удалить</a></td> 
       </tr>
     <?php } 
-    if(array_key_exists('goods', $outputDB)){
+    if(array_key_exists('users', $outputDB)){
       renderPagination($tottalPages, $fileName);
     }
     ?>

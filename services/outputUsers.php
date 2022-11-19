@@ -16,14 +16,11 @@ function outputGoods($query){
     $goodsOnPage = 3;
     $offset = ($page - 1)  * $goodsOnPage;
     $totalPages = ceil(count($goods) / $goodsOnPage);
-    $goods = DB::connect(sprintf($query . $queryStr['offset'], $goodsOnPage, $offset))->fetchAll();
-
+    $goods = DB::connect(sprintf($query . $queryStr['offsetUsers'], $goodsOnPage, $offset))->fetchAll();
+    
     return [
-      'goods'     => $goods,
+      'users'     => $goods,
       'totalPages' => $totalPages,
     ];
   }
 }
-
-
-

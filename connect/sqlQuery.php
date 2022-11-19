@@ -13,6 +13,40 @@ WHERE
   users.login = '%s'
 ";
 
+$queryStr['getAllUsers'] = 
+"SELECT 
+  users.id, users.login, status.name, status.status_code 
+  FROM 
+    users 
+  INNER JOIN 
+    status 
+  ON
+    users.status_id = status.id
+";
+
+$queryStr['searchUserOnId'] = 
+"SELECT
+  * 
+FROM
+  users
+WHERE
+  id = '%s'
+";
+$queryStr['searchOnLogin'] = 
+"SELECT
+  * 
+FROM
+  users
+WHERE
+  login = '%s'
+";
+
+$queryStr['offsetUsers'] = 
+"
+ORDER BY users.id
+LIMIT %u OFFSET %u
+";
+
 $queryStr['getPswUser'] = 
 "SELECT 
   password
@@ -28,7 +62,7 @@ $queryStr['getAllGoods'] =
 FROM
   goods
 ";
-$queryStr['getAllGoodsOffset'] = 
+$queryStr['offset'] = 
 // "SELECT
 //   *
 // FROM
@@ -79,6 +113,7 @@ WHERE
 AGAINST
 ('%s' IN BOOLEAN MODE)
 ";
+
 $queryStr['searchOnId'] = 
 "SELECT
   * 
