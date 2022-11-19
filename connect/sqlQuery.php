@@ -34,9 +34,13 @@ WHERE
 ";
 $queryStr['searchOnLogin'] = 
 "SELECT
-  * 
+  users.id, users.login, status.name, status.status_code 
 FROM
   users
+INNER JOIN 
+  status
+ON
+  users.status_id = status.id
 WHERE
   login = '%s'
 ";
