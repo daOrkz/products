@@ -122,6 +122,30 @@ td:nth-child(7) > a {
 .form-search > input {
   padding: 5px 10px;
 }
+
+.form-select {
+  display: flex;
+  align-items: center;
+}
+.form-select-wrap{
+  margin: 20px 0;
+}
+.select {
+  font-size: 1.8em;
+
+}
+.select-item{
+  /* margin: 20px 0; */
+  font-size: 1em;
+}
+.select-btn {
+  font-size: 1em;
+  width: 150px;
+  height: 30px;
+  padding: 5px;
+  margin: 0 0 0 20px;
+}
+
 .msg-success {
   --bs-alert-color: #0f5132;;
   --bs-alert-bg: #d1e7dd;
