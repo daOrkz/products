@@ -39,7 +39,7 @@ $_SESSION['msg'] = '';
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Panel</title>
+  <title>User panel</title>
 </head>
 <body>
 
@@ -48,6 +48,11 @@ $_SESSION['msg'] = '';
     <form class="form-search" action=""> 
       <input type="text" name="id" id="" placeholder="id">
       <input type="text" name="login" id="" placeholder="login">
+      <select class="select" name="status" id="">
+        <option class="select-item" value="user">Users</option>
+        <option class="select-item" value="admin">Admins</option>
+      </select>
+      <!-- <input type="text" name="status" id="" placeholder="status"> -->
       <button type="submit">Search</button>
     </form>
   </div>

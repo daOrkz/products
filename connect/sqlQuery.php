@@ -16,22 +16,27 @@ WHERE
 $queryStr['getAllUsers'] = 
 "SELECT 
   users.id, users.login, status.name, status.status_code 
-  FROM 
-    users 
-  INNER JOIN 
-    status 
-  ON
-    users.status_id = status.id
+FROM 
+  users 
+INNER JOIN 
+  status 
+ON
+  users.status_id = status.id
 ";
 
 $queryStr['searchUserOnId'] = 
 "SELECT
-  * 
+  users.id, users.login, status.name, status.status_code 
 FROM
   users
+INNER JOIN 
+  status
+ON
+  users.status_id = status.id
 WHERE
-  id = '%s'
+  users.id = '%s'
 ";
+
 $queryStr['searchOnLogin'] = 
 "SELECT
   users.id, users.login, status.name, status.status_code 
@@ -43,6 +48,19 @@ ON
   users.status_id = status.id
 WHERE
   login = '%s'
+";
+
+$queryStr['searchOnstatus'] = 
+"SELECT
+  users.id, users.login, status.name, status.status_code 
+FROM
+  users
+INNER JOIN 
+  status
+ON
+  users.status_id = status.id
+WHERE
+  status.name = '%s'
 ";
 
 $queryStr['offsetUsers'] = 

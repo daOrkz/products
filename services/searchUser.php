@@ -50,6 +50,17 @@ try {
 
     // $filterUser = DB::connect(sprintf($queryStr['searchOnPrice'], $price))->fetchall();
   }
+  if(!empty($_REQUEST['status'])) {
+    $sqlQuerryStr = sprintf($queryStr['searchOnstatus'], $_REQUEST['status']);
+    $filterRow = DB::connect($sqlQuerryStr)->rowCount();
+    if($filterRow > 3) {
+      return $filterUser = outputGoods($sqlQuerryStr);
+    }
+
+    return $filterUser = DB::connect($sqlQuerryStr)->fetchAll();
+
+    // $filterUser = DB::connect(sprintf($queryStr['searchOnPrice'], $price))->fetchall();
+  }
   return $filterUser;
 } catch (PDOException $e) {
   $_SESSION['msg'] = $e;
