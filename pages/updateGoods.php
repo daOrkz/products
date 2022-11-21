@@ -1,26 +1,25 @@
 <?php
 
 session_start();
-include_once('templates/header.php');
-$outputDB = require( realpath(__DIR__ . '/..') .  '/services/search.php' );
-print_r($outputDB);
-$good = $outputDB[0];
 
+require( realpath(__DIR__ . '/..') .  '/connect/connect.php' );
+require( realpath(__DIR__ . '/..') .  '/connect/sqlQuery.php' );
 
-$goodForUpdate;
-$id = $_GET['id'];
+$id = trim($_GET['id']);
 
-// foreach($goods as $idx => $good){
-//   if($good['id'] == $id) {
-//     $goodForUpdate = $good;
-//   }
-// }
+$sqlQuerryStr = sprintf($queryStr['searchOnId'], $id);
+$good = DB::connect($sqlQuerryStr)->fetch();
+
 
 $title = $good['title'];
 $price = $good['price'];
 $text = $good['text'];
 $image = $good['img'];
 
+?>
+
+<?php
+include_once('templates/header.php');
 ?>
 
 <!DOCTYPE html>
@@ -35,11 +34,12 @@ $image = $good['img'];
 
 <div class="container">
   <div class="form__update__wrap">
-    <form action="../services/updateGoods.php?id=<?= $id ?>" method="POST">
+    <form enctype="multipart/form-data" action="../services/updateGoods.php?id=<?= $id ?>" method="POST">
         <input name="title" type="text" placeholder="Title" value=" <?= $title ?> ">
         <input name="price" type="text" placeholder="Price" value=" <?= $price ?> ">
         <textarea name="text" id="" cols="30" rows="10" placeholder="About"> <?= $text ?> </textarea>
-        <input name="image" type="text" placeholder="Image" value=" <?= $image ?> ">
+        <input name="img" type="text" placeholder="Image" value=" <?= $image ?> ">
+        <input name="image" type="file" />
         <button type="submit">Update</button>
     </form>
   </div>

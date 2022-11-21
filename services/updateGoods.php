@@ -9,7 +9,23 @@ $id    = strip_tags($_REQUEST['id']);
 $title = strip_tags($_REQUEST['title']);
 $price = strip_tags($_REQUEST['price']);
 $text  = strip_tags($_REQUEST['text']);
-$image = strip_tags($_REQUEST['image']);
+// $image = strip_tags($_REQUEST['image']);
+
+
+echo '<pre>';
+print_r($_FILES);
+echo '</pre>';
+
+
+$uploaddir = '/home/fillipp/www/test/res/img/';
+$uploadfile = $uploaddir . basename($_FILES['image']['name']);
+
+if (move_uploaded_file($_FILES['image']['tmp_name'], $uploadfile)) {
+  echo "Файл корректен и был успешно загружен.\n";
+} else {
+  echo "Возможная атака с помощью файловой загрузки!\n";
+}
+$image = basename($_FILES['image']['name']);
 
 $opt = ['title' => $title, 'price' => $price, 'text' => $text, 'image' => $image];
 

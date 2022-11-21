@@ -52,7 +52,6 @@ $_SESSION['msg'] = '';
         <option class="select-item" value="user">Users</option>
         <option class="select-item" value="admin">Admins</option>
       </select>
-      <!-- <input type="text" name="status" id="" placeholder="status"> -->
       <button type="submit">Search</button>
     </form>
   </div>

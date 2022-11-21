@@ -70,7 +70,7 @@ $_SESSION['msg'] = '';
         <td><?= $good['title'] ?></td>
         <td><?= $good['price'] ?></td>
         <td><?= $good['text']  ?></td>
-        <td><?= $good['img']   ?></td>
+        <td> <img class="goodImg" src="../res/img/<?=$good['img']?>" alt="нет изображения"></td>
         <td><a href="../pages/updateGoods.php?id=<?= $good['id'] ?> ">Обновить</a></td>
         <td><a href="../services/deleteGoods.php?id=<?= $good['id'] ?>">Удалить</a></td> 
       </tr>
