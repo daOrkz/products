@@ -3,12 +3,13 @@
 session_start();
 
 require( realpath(__DIR__ . '/..') .  '/services/pagin.php' );
-$outputDB = require( realpath(__DIR__ . '/..') .  '/services/search.php' );
+require('templates/changeStatusSelect.php');
+$outputDB = require( realpath(__DIR__ . '/..') .  '/services/searchUser.php' );
 
 $fileName =  basename(__FILE__, '.php');
-$goods = $outputDB;
-if(array_key_exists('goods', $outputDB)){
-  $goods = $outputDB['goods'];
+$users = $outputDB;
+if(array_key_exists('users', $outputDB)){
+  $users = $outputDB['users'];
   $tottalPages = $outputDB['totalPages'];
 }
 
@@ -39,7 +40,7 @@ $_SESSION['msg'] = '';
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Goods Panel</title>
+  <title>User panel</title>
 </head>
 <body>
 
@@ -47,35 +48,37 @@ $_SESSION['msg'] = '';
   <div class="form__search__wrap">
     <form class="form-search" action=""> 
       <input type="text" name="id" id="" placeholder="id">
-      <input type="text" name="title" id="" placeholder="title">
-      <input type="text" name="price" id="" placeholder="price">
-      <input type="text" name="text" id="" placeholder="text">
+      <input type="text" name="login" id="" placeholder="login">
+      <select class="select" name="status" id="">
+        <option class="select-item" value="user">Users</option>
+        <option class="select-item" value="admin">Admins</option>
+      </select>
       <button type="submit">Search</button>
     </form>
   </div>
   <table>
     <tr>
       <th>id</th>
-      <th>Название</th>
-      <th>Цена</th>
-      <th>Описание</th>
-      <th>Изображение</th>
+      <th>Логин</th>
+      <th>Статус</th>
+      <th>Статус код</th>
       <th>&#9998;</th>
       <th>&#10006;</th>
     </tr>
 
-    <?php foreach($goods as $good) { ?>
+    <?php foreach($users as $user) { ?>
       <tr>
-        <td><?= $good['id']    ?></td>
-        <td><?= $good['title'] ?></td>
-        <td><?= $good['price'] ?></td>
-        <td><?= $good['text']  ?></td>
-        <td> <img class="goodImg" src="../res/img/<?=$good['img']?>" alt="нет изображения"></td>
-        <td><a href="../pages/updateGoods.php?id=<?= $good['id'] ?> ">Обновить</a></td>
-        <td><a href="../services/deleteGoods.php?id=<?= $good['id'] ?>">Удалить</a></td> 
+        <td><?= $user['id']    ?></td>
+        <td><?= $user['login'] ?></td>
+        <td><?= $user['name'] ?></td>
+        <td><?= $user['status_code']  ?></td>
+        <td> <?= renderSelect($user['id']) ?> </td>
+        <td>
+        <button class="select-btn" type="submit" form="changeStatus">??? X_x ????</button>
+      </td> 
       </tr>
     <?php } 
-    if(array_key_exists('goods', $outputDB)){
+    if(array_key_exists('users', $outputDB)){
       renderPagination($tottalPages, $fileName);
     }
     ?>
