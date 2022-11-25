@@ -63,6 +63,11 @@ WHERE
   status.name = '%s'
 ";
 
+$queryStr['changeStatus'] = 
+"SET @status_id = (select id from status where name = :status);
+UPDATE users SET status_id = @status_id WHERE id = :id;
+";
+
 $queryStr['offsetUsers'] = 
 "
 ORDER BY users.id

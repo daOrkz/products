@@ -3,6 +3,7 @@
 session_start();
 
 require( realpath(__DIR__ . '/..') .  '/services/pagin.php' );
+require('templates/changeStatusSelect.php');
 $outputDB = require( realpath(__DIR__ . '/..') .  '/services/searchUser.php' );
 
 $fileName =  basename(__FILE__, '.php');
@@ -71,8 +72,10 @@ $_SESSION['msg'] = '';
         <td><?= $user['login'] ?></td>
         <td><?= $user['name'] ?></td>
         <td><?= $user['status_code']  ?></td>
-        <td><a href="../pages/updateGoods.php?id=<?= $good['id'] ?> ">Обновить</a></td>
-        <td><a href="../services/deleteGoods.php?id=<?= $good['id'] ?>">Удалить</a></td> 
+        <td> <?= renderSelect($user['id']) ?> </td>
+        <td>
+        <button class="select-btn" type="submit" form="changeStatus">??? X_x ????</button>
+      </td> 
       </tr>
     <?php } 
     if(array_key_exists('users', $outputDB)){

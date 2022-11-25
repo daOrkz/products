@@ -31,7 +31,7 @@ $image = $good['img'];
 <div class="container">
   <div class="form__update__wrap">
     <p> <?= $title ?> </p>
-    <img src="" alt="img_good" width="200px">
+    <img class="goodImg" src="../res/img/<?=$good['img']?>" alt="нет изображения">
     <p>Цена: <?= $price ?> </p>
     <p>Описание: <?= $text ?> </p>
     <a href="user_panel.php">Назад</a>

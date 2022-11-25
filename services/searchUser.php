@@ -16,8 +16,8 @@ if(array_key_exists('login', $_GET)) {
   $login = trim($_REQUEST['login']);
 
   $_SESSION['search'] = [
-    'id'         => $id,
-    'login'      => $login,
+    'id'    => $id,
+    'login' => $login,
   ];
 }
 

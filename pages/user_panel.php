@@ -48,7 +48,7 @@ if($_SESSION['user']['status'] == 'user' && $_SESSION['user']['statusCode'] < 90
         <td><?= $good['title'] ?></td>
         <td><?= $good['price'] ?></td>
         <td><?= $good['text'] ?></td>
-        <td><?= $good['img'] ?></td>
+        <td> <img class="goodImg" src="../res/img/<?=$good['img']?>" alt="нет изображения"></td>
         <td><a href="../pages/aboutGoods.php?id=<?= $good['id'] ?>">Подробнее</a></td>
       </tr>
     <?php

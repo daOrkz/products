@@ -35,17 +35,7 @@ try {
   $_SESSION['msg'] = $e;
   header('Location: ../pages/admin_panel.php');
 }
-if($count > 0) {
+if($count > 0) {  
   $_SESSION['msg'] = 'Данные успешно обновленны';
   header('Location: ../pages/admin_panel.php');
 }
-
-/* 
-if($count > 0) {
-  $_SESSION['msg'] = 'Данные успешно обновленны';
-  header('Location: ../pages/admin_panel.php');
-} else {
-  $_SESSION['msg'] = 'Данные не удалось обновить';
-  header('Location: ../pages/admin_panel.php');
-}
- */
