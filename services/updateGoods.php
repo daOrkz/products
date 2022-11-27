@@ -9,16 +9,9 @@ $id    = strip_tags($_REQUEST['id']);
 $title = strip_tags($_REQUEST['title']);
 $price = strip_tags($_REQUEST['price']);
 $text  = strip_tags($_REQUEST['text']);
-// $image = strip_tags($_REQUEST['image']);
 
 
-echo '<pre>';
-print_r($_FILES);
-echo '</pre>';
-print_r(realpath(__DIR__ . '/..') .  '/res/img/');
 
-
-// $uploaddir = $_SERVER['HTTP_HOST'] . '/res/img/';
 $uploaddir = (realpath(__DIR__ . '/..') .  '/res/img/');
 $uploadfile = $uploaddir . basename($_FILES['image']['name']);
 
