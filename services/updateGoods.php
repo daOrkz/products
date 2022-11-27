@@ -15,15 +15,17 @@ $text  = strip_tags($_REQUEST['text']);
 echo '<pre>';
 print_r($_FILES);
 echo '</pre>';
+print_r(realpath(__DIR__ . '/..') .  '/res/img/');
 
 
-$uploaddir = '/home/fillipp/www/test/res/img/';
+// $uploaddir = $_SERVER['HTTP_HOST'] . '/res/img/';
+$uploaddir = (realpath(__DIR__ . '/..') .  '/res/img/');
 $uploadfile = $uploaddir . basename($_FILES['image']['name']);
 
 if (move_uploaded_file($_FILES['image']['tmp_name'], $uploadfile)) {
-  echo "Файл корректен и был успешно загружен.\n";
+  // echo "Файл корректен и был успешно загружен.\n";
 } else {
-  echo "Возможная атака с помощью файловой загрузки!\n";
+  // echo "Возможная атака с помощью файловой загрузки!\n";
 }
 $image = basename($_FILES['image']['name']);
 
